@@ -2,56 +2,33 @@ import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import Nav from './ELEMENTS/Nav';
+import { Grid } from '@mui/material';
+import FoodCard from './app/Features/food/FoodCard';
+import { useSelector } from 'react-redux';
+import { selectFood } from './app/Features/food/foodSlice';
+import FoodForm from './app/Features/food/FoodForm';
 
 function App() {
+  const foods = useSelector(selectFood) || []
+console.log('foods',foods)
+  const plates = foods.map(food => (
+    <FoodCard food={food} />
+  ))
+
   return (
+    <>
+    <Nav/>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <Grid container spacing={2} margin='auto' padding='2rem'>
+        <Grid item xs={12} >
+        <h1 padding={0} width='10%'>Experiences</h1>
+        </Grid>
+        {plates}
+      </Grid>
+      <FoodForm/>
     </div>
+    </>
   );
 }
 
