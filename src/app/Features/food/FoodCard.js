@@ -16,8 +16,7 @@ export default function FoodCard({ food }) {
   }
 
   return (
-    <Grid item x={12} md={6} lg={3}>
-
+    <Grid item xs={12} md={6} lg={4}>
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
           <CardMedia

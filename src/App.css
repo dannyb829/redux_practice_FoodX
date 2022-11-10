@@ -41,3 +41,9 @@
 .nav-bar{
   height: 3rem
 }
+
+#home-heading{
+  font-size: 4rem;
+  width: 17%;
+  left: 0;
+}

@@ -11,23 +11,29 @@ import FoodForm from './app/Features/food/FoodForm';
 
 function App() {
   const foods = useSelector(selectFood) || []
-console.log('foods',foods)
+  console.log('foods', foods)
   const plates = foods.map(food => (
     <FoodCard food={food} />
   ))
 
   return (
     <>
-    <Nav/>
-    <div className="App">
-      <Grid container spacing={2} margin='auto' padding='2rem'>
-        <Grid item xs={12} >
-        <h1 padding={0} width='10%'>Experiences</h1>
+      <Nav />
+      <div className="App">
+        <Grid container spacing={2} margin='auto' padding='2rem'>
+          <Grid item xs={12} >
+            <p id='home-heading'>Experiences</p>
+          </Grid>
+          <Grid item md={8}>
+            <Grid container spacing={2}>
+              {plates}
+            </Grid>
+          </Grid>
+        <Grid item md={4}>
+          <FoodForm />
         </Grid>
-        {plates}
-      </Grid>
-      <FoodForm/>
-    </div>
+        </Grid>
+      </div>
     </>
   );
 }

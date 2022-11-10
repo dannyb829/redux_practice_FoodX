@@ -6,11 +6,15 @@ const initialFoods = [
     {id: 3, image: 'https://static.onecms.io/wp-content/uploads/sites/44/2019/08/27044813/5419901.jpg', name: 'Ratatouille', description:'a seasoned stew made of eggplant, tomatoes, green peppers, squash, and sometimes meat', rating: 5}
 ]
 
+const determineNewFoodID = (state) => {
+    return state.map(food => food.id).sort()[state.length - 1] + 1
+}
+
 const options = {
     name: 'food',
     initialState: initialFoods,
     reducers: {
-        addFood: (state, action) => [...state, {...action.payload,id: state.length + 1}],
+        addFood: (state, action) => [...state, {...action.payload,id: determineNewFoodID(state)}],
         removeFood: (state, action) => state.filter(food => food.id !== action.payload.id),
         editFood: (state, action) => state.map(food => {
             return (food.id === action.payload.id) ? action.payload : food
